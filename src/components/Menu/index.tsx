@@ -41,19 +41,24 @@ export function Menu() {
 
   return (
     <nav className={styles.menu}>
-      <Link href='#'>
+      <Link href='#' aria-label='Home' title='Ir para Home'>
         <HouseIcon />
       </Link>
 
-      <Link href='#'>
+      <Link href='#' aria-label='Histórico' title='Ver histórico'>
         <HistoryIcon />
       </Link>
 
-      <Link href='#'>
+      <Link href='#' aria-label='Configurações' title='Configurações'>
         <SettingsIcon />
       </Link>
 
-      <Link href='#' onClick={handleThemeChange}>
+      <Link
+        href='#'
+        onClick={handleThemeChange}
+        aria-label='Tema'
+        title='Alterar tema'
+      >
         {nextThemeIcon[theme]}
       </Link>
     </nav>
