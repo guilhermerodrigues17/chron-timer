@@ -6,6 +6,7 @@ import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
+import { Cycles } from './components/Cycles';
 
 export function App() {
   return (
@@ -31,6 +32,18 @@ export function App() {
               labelText='Task'
               placeholder='Digite algo'
             />
+          </div>
+
+          <div className='formRow'>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+
+          <div className='formRow'>
+            <Cycles />
+          </div>
+
+          <div className='formRow'>
+            <button>Play</button>
           </div>
         </form>
       </Container>
