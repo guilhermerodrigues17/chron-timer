@@ -1,18 +1,66 @@
+import styles from './styles.module.css';
 import { PlayCircleIcon } from 'lucide-react';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
-import styles from './styles.module.css';
+import { useRef } from 'react';
+import type { TaskModel } from '../../models/TaskModel';
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
+import { getNextCycle } from '../../utils/getNextCycle';
+import { getNextCycleType } from '../../utils/getNextCycleType';
+import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 export function Form() {
+  const taskNameInput = useRef<HTMLInputElement>(null);
+  const { state, setState } = useTaskContext();
+  const nextCycle = getNextCycle(state.currentCycle);
+  const nextCycleType = getNextCycleType(nextCycle);
+
+  function handleNewTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!taskNameInput.current) return;
+
+    const taskName = taskNameInput.current.value.trim();
+    if (!taskName) {
+      alert('Digite um nome para a tarefa');
+      return;
+    }
+
+    const newTask: TaskModel = {
+      id: crypto.randomUUID(),
+      name: taskName,
+      startDate: Date.now(),
+      completeDate: null,
+      interruptedDate: null,
+      duration: state.config[nextCycleType],
+      type: nextCycleType,
+    };
+
+    const secondsRemaining = newTask.duration * 60;
+
+    setState(prevState => {
+      return {
+        ...prevState,
+        config: { ...prevState.config },
+        tasks: [...prevState.tasks, newTask],
+        activeTask: newTask,
+        currentCycle: nextCycle,
+        secondsRemaining,
+        formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
+      };
+    });
+  }
+
   return (
-    <form className={styles.form} action=''>
+    <form onSubmit={handleNewTask} className={styles.form} action=''>
       <div className={styles.formRow}>
         <DefaultInput
           id='taskInput'
           type='text'
           labelText='Task'
           placeholder='Digite algo'
+          ref={taskNameInput}
         />
       </div>
 
