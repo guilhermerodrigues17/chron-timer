@@ -35,3 +35,12 @@
   text-align: left;
   padding: 1.6rem;
 }
+
+.tableTh {
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.tableTh:hover {
+  filter: brightness(80%);
+}
