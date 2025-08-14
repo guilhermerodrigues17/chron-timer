@@ -1,5 +1,6 @@
 import type React from 'react';
 import styles from './styles.module.css';
+import { Link } from 'react-router';
 
 type LinkProps = {
   href: string;
@@ -7,11 +8,11 @@ type LinkProps = {
   className?: string;
 } & React.ComponentProps<'a'>;
 
-export function Link({ href, children, className, ...props }: LinkProps) {
+export function RouterLink({ href, children, className, ...props }: LinkProps) {
   const styleClassName = className ? className : styles.link;
   return (
-    <a href={href} className={styleClassName} {...props}>
+    <Link to={href} className={styleClassName} {...props}>
       {children}
-    </a>
+    </Link>
   );
 }
