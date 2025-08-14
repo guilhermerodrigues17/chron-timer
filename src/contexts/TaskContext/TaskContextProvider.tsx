@@ -39,6 +39,8 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
       timerWorker.terminate();
     }
 
+    document.title = `${state.formattedSecondsRemaining} - Chron Timer`;
+
     timerWorker.postMessage(state);
   }, [state, timerWorker]);
 
