@@ -56,6 +56,12 @@ export function History() {
     dispatch({ type: TaskActionTypes.RESET_TASKS });
   }, [confirmResetHistory, dispatch]);
 
+  useEffect(() => {
+    return () => {
+      showMessage.dismiss();
+    };
+  }, []);
+
   function handleSortTasksByField({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc';
 
@@ -82,7 +88,7 @@ export function History() {
         <Heading>
           <span>Histórico</span>
           {hasTasks && (
-          <span className={styles.buttonContainer}>
+            <span className={styles.buttonContainer}>
               <DefaultButton
                 icon={<Trash />}
                 color='red'
@@ -91,7 +97,7 @@ export function History() {
                 onClick={handleResetHistory}
               />
             </span>
-            )}
+          )}
         </Heading>
       </Container>
 
