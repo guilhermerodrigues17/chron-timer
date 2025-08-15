@@ -81,8 +81,8 @@ export function History() {
       <Container>
         <Heading>
           <span>Histórico</span>
+          {hasTasks && (
           <span className={styles.buttonContainer}>
-            {hasTasks && (
               <DefaultButton
                 icon={<Trash />}
                 color='red'
@@ -90,8 +90,8 @@ export function History() {
                 title='Apagar histórico'
                 onClick={handleResetHistory}
               />
+            </span>
             )}
-          </span>
         </Heading>
       </Container>
 
