@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  text-align: center;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.btnContainer button {
+  min-width: auto;
+  margin: 0;
+}
+
+.btnContainer svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}

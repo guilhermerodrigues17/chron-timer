@@ -5,6 +5,7 @@ export const TaskActionTypes = {
   INTERRUPT_TASK: 'INTERRUPT_TASK',
   COUNT_DOWN: 'COUNT_DOWN',
   COMPLETED_TASK: 'COMPLETED_TASK',
+  RESET_TASKS: 'RESET_TASKS',
 } as const;
 
 export type TaskActionTypes = keyof typeof TaskActionTypes;
@@ -23,4 +24,7 @@ export type TaskActionsModel =
     }
   | {
       type: typeof TaskActionTypes.COMPLETED_TASK;
+    }
+  | {
+      type: typeof TaskActionTypes.RESET_TASKS;
     };
