@@ -4,6 +4,7 @@ import { NotFound } from '../pages/NotFound';
 import { AboutPomodoro } from '../pages/AboutPomodoro';
 import { useEffect } from 'react';
 import { History } from '../pages/History';
+import { Settings } from '../pages/Settings';
 
 export function MainRouter() {
   function ScrollToTop() {
@@ -21,6 +22,7 @@ export function MainRouter() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/history/' element={<History />} />
+        <Route path='/settings/' element={<Settings />} />
         <Route path='/about-pomodoro/' element={<AboutPomodoro />} />
 
         <Route path='*' element={<NotFound />} />
