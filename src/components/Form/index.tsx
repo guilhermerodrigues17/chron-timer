@@ -57,8 +57,8 @@ export function Form() {
         <DefaultInput
           id='taskInput'
           type='text'
-          labelText='Task'
-          placeholder='Digite algo'
+          labelText='Tarefa'
+          placeholder='Digite um título para a tarefa'
           ref={taskNameInput}
           disabled={!!state.activeTask}
           defaultValue={lastTaskName}
